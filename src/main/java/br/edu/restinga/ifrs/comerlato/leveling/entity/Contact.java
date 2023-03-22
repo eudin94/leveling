@@ -1,6 +1,7 @@
 package br.edu.restinga.ifrs.comerlato.leveling.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "contact")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Contact {
@@ -25,8 +27,7 @@ public class Contact {
     @ElementCollection()
     @JoinTable(
             name = "phone",
-            joinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "phoneNumbers", referencedColumnName = "number")
+            joinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "id")
     )
     private List<String> phoneNumbers;
 }
