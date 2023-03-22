@@ -16,6 +16,10 @@ spring:
     url: jdbc:mysql://localhost:3310/leveling
     user: user
     password: pass123
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
 
 springdoc:
   swagger-ui:
