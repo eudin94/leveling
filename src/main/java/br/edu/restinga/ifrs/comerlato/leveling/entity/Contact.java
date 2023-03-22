@@ -23,7 +23,10 @@ public class Contact {
     private String email;
 
     @ElementCollection()
-    @JoinTable(name = "phone",
-            joinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "id"))
+    @JoinTable(
+            name = "phone",
+            joinColumns = @JoinColumn(name = "contact_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "phoneNumbers", referencedColumnName = "number")
+    )
     private List<String> phoneNumbers;
 }
