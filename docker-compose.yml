@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  mysql_database:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'leveling'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'pass123'
+      MYSQL_ROOT_PASSWORD: 'pass123'
+      MYSQL_TCP_PORT: 3310
+    ports:
+      - '3310:3310'
+    expose:
+      - '3310'
+    volumes:
+      - leveling-db:/var/lib/mysql
+
+volumes:
+  leveling-db:

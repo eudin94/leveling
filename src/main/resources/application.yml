@@ -8,8 +8,13 @@ spring:
   application.name: contact-api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/leveling
-    name: username
+    url: jdbc:mysql://localhost:3310/leveling
+    username: user
+    password: pass123
+  flyway:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3310/leveling
+    user: user
     password: pass123
 
 springdoc:

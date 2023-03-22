@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface ContactController {
 
-    @GetMapping("listagem")
+    @GetMapping("list")
     List<ContactDTO> getContacts();
 
-    @PostMapping("cadastro")
+    @PostMapping("register")
     ContactDTO saveContact();
 }
