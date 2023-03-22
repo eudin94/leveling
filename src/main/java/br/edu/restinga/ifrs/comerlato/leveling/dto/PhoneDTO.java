@@ -6,17 +6,15 @@ import lombok.NoArgsConstructor;
 import lombok.With;
 import lombok.experimental.SuperBuilder;
 
-import java.util.List;
-
 @Data
 @With
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactDTO {
+public class PhoneDTO {
 
     private Long id;
-    private String name;
-    private String email;
-    private List<PhoneDTO> phoneNumbers;
+    private String contactId;
+    private String number;
+
 }

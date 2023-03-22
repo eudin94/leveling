@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api-contact")
-@Tag(name = "Api de Contatos", description = "Api para cadastro e listagem de contatos")
+@RequestMapping("contact-api")
+@Tag(name = "API de Contatos", description = "API ara cadastro e listagem de contatos")
 public class ContactControllerImpl implements ContactController {
 
     @Override

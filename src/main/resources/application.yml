@@ -1,6 +1,24 @@
+server:
+  port: 8080
+  servlet.context-path: /api
+  compression.enabled: true
+  error.include-message: always
+
 spring:
+  application.name: contact-api
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/leveling
     name: username
     password: pass123
+
+springdoc:
+  override-with-generic-response: false
+  api-docs:
+    enabled: true
+  swagger-ui:
+    server.list: http://localhost:8080/api/
+    enabled: true
+    path: /swagger-ui
+    disable-swagger-default-url: true
+  default-produces-media-type: application/json

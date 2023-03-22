@@ -126,7 +126,7 @@
                     <user>username</user>
                     <password>pass123</password>
                     <baselineOnMigrate>true</baselineOnMigrate>
-                    <schemas>api-contact</schemas>
+                    <schemas>contact-api</schemas>
                     <locations>
                         <location>
                             filesystem:src/main/resources/db/migration
