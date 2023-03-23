@@ -24,10 +24,12 @@ public class Contact {
     private String name;
     private String email;
 
-    @ElementCollection()
+    @ElementCollection
+    @OneToMany
     @JoinTable(
             name = "phone",
-            joinColumns = @JoinColumn(name = "contactId", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "contactId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "number", referencedColumnName = "")
     )
-    private List<String> phoneNumbers;
+    private List<Phone> phoneNumbers;
 }

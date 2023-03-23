@@ -4,25 +4,25 @@ import br.edu.restinga.ifrs.comerlato.leveling.dto.ContactDTO;
 import br.edu.restinga.ifrs.comerlato.leveling.entity.Contact;
 import br.edu.restinga.ifrs.comerlato.leveling.repository.ContactRepository;
 import br.edu.restinga.ifrs.comerlato.leveling.service.ContactService;
-import br.edu.restinga.ifrs.comerlato.leveling.util.mapper.ContactMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static br.edu.restinga.ifrs.comerlato.leveling.util.mapper.ContactMapper.fromEntity;
 
 @Service
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository contactRepository;
-    private final ContactMapper contactMapper;
 
     @Override
     public ContactDTO saveContact(String name, String email, List<String> phoneNumbers) {
         final var contact = contactRepository.save(
-                Contact.builder().name(name).name(email).phoneNumbers(phoneNumbers).build()
+                Contact.builder().name(name).email(email).phoneNumbers(phoneNumbers).build()
         );
 
-        return contactMapper.fromEntity(contact);
+        return fromEntity(contact);
     }
 }

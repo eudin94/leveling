@@ -9,6 +9,6 @@ CREATE TABLE phone
 (
     id         int PRIMARY KEY AUTO_INCREMENT,
     contact_id int          NOT NULL,
-    numero     varchar(100) NOT NULL,
+    number     varchar(100) NOT NULL,
     FOREIGN KEY (contact_id) REFERENCES contact (id)
 );
