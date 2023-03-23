@@ -1,6 +1,13 @@
 package br.edu.restinga.ifrs.comerlato.leveling.controller;
 
 import br.edu.restinga.ifrs.comerlato.leveling.dto.ContactDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,11 +16,31 @@ import java.util.List;
 
 public interface ContactController {
 
+    @Operation(summary = "Returns a list of contacts")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Contact list retrieved!",
+                    content = {@Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            array = @ArraySchema(schema = @Schema(implementation = ContactDTO.class))
+                    )})
+    })
     @GetMapping("list")
     List<ContactDTO> getContacts();
 
+    @Operation(summary = "Register a new contact")
+    @ApiResponses(value = {
+            @ApiResponse(
+                    responseCode = "201",
+                    description = "Contact saved!",
+                    content = {@Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = ContactDTO.class)
+                    )})
+    })
     @PostMapping("register")
-    void saveContact(@RequestParam("name") final String name,
-                     @RequestParam("email") final String email,
-                     @RequestParam("phoneNumbers") final List<String> phoneNumbers);
+    ContactDTO saveContact(@RequestParam("name") final String name,
+                           @RequestParam("email") final String email,
+                           @RequestParam("phoneNumbers") final List<String> phoneNumbers);
 }

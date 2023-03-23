@@ -8,5 +8,5 @@ public interface ContactService {
 
     List<ContactDTO> findAllContacts();
 
-    void saveContact(final String name, final String email, final List<String> phoneNumbers);
+    ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers);
 }

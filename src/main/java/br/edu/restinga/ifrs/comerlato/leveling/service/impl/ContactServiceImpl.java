@@ -31,7 +31,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void saveContact(final String name, final String email, final List<String> phoneNumbers) {
+    public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
         final var contact = contactRepository.save(
                 Contact.builder()
                         .name(name)
@@ -40,5 +40,6 @@ public class ContactServiceImpl implements ContactService {
         );
 
         phoneService.savePhone(phoneNumbers, contact);
+        return fromEntity(contact, phoneNumbers);
     }
 }

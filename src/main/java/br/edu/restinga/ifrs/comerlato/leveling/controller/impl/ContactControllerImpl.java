@@ -22,7 +22,7 @@ public class ContactControllerImpl implements ContactController {
     }
 
     @Override
-    public void saveContact(final String name, final String email, final List<String> phoneNumbers) {
-        contactService.saveContact(name, email, phoneNumbers);
+    public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
+        return contactService.saveContact(name, email, phoneNumbers);
     }
 }
