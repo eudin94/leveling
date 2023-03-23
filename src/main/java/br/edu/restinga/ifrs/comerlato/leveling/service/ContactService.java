@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface ContactService {
 
-    ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers);
+    List<ContactDTO> findAllContacts();
+
+    void saveContact(final String name, final String email, final List<String> phoneNumbers);
 }

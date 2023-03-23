@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface PhoneService {
 
+    List<String> findPhoneNumbers(final Long contactId);
+
     void savePhone(final List<String> phoneNumbers, final Contact contact);
 }

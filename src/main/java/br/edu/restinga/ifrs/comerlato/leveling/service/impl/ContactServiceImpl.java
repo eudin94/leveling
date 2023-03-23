@@ -20,7 +20,18 @@ public class ContactServiceImpl implements ContactService {
     private final PhoneService phoneService;
 
     @Override
-    public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
+    public List<ContactDTO> findAllContacts() {
+        return contactRepository.findAll()
+                .stream()
+                .map(contact -> {
+                    final var phoneNumbers = phoneService.findPhoneNumbers(contact.getId());
+                    return fromEntity(contact, phoneNumbers);
+                })
+                .toList();
+    }
+
+    @Override
+    public void saveContact(final String name, final String email, final List<String> phoneNumbers) {
         final var contact = contactRepository.save(
                 Contact.builder()
                         .name(name)
@@ -29,6 +40,5 @@ public class ContactServiceImpl implements ContactService {
         );
 
         phoneService.savePhone(phoneNumbers, contact);
-        return fromEntity(contact);
     }
 }

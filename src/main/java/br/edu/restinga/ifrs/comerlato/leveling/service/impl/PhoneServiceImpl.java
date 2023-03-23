@@ -16,6 +16,11 @@ public class PhoneServiceImpl implements PhoneService {
     private final PhoneRepository phoneRepository;
 
     @Override
+    public List<String> findPhoneNumbers(Long contactId) {
+        return phoneRepository.findAllPhoneNumbersByContactId(contactId);
+    }
+
+    @Override
     public void savePhone(final List<String> phoneNumbers, final Contact contact) {
         phoneNumbers.forEach(pn -> phoneRepository.save(Phone.builder()
                 .contact(contact)

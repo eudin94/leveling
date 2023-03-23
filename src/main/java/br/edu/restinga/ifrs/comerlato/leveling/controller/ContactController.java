@@ -13,7 +13,7 @@ public interface ContactController {
     List<ContactDTO> getContacts();
 
     @PostMapping("register")
-    ContactDTO saveContact(@RequestParam("name") final String name,
-                           @RequestParam("email") final String email,
-                           @RequestParam("phoneNumbers") final List<String> phoneNumbers);
+    void saveContact(@RequestParam("name") final String name,
+                     @RequestParam("email") final String email,
+                     @RequestParam("phoneNumbers") final List<String> phoneNumbers);
 }
