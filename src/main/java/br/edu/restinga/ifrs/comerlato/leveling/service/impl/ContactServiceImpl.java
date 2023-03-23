@@ -14,8 +14,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
 
-    private ContactRepository contactRepository;
-    private ContactMapper contactMapper;
+    private final ContactRepository contactRepository;
+    private final ContactMapper contactMapper;
 
     @Override
     public ContactDTO saveContact(String name, String email, List<String> phoneNumbers) {
