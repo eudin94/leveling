@@ -6,6 +6,7 @@ import br.edu.restinga.ifrs.comerlato.leveling.repository.ContactRepository;
 import br.edu.restinga.ifrs.comerlato.leveling.service.ContactService;
 import br.edu.restinga.ifrs.comerlato.leveling.service.PhoneService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
         validateContactRequest(name, email, phoneNumbers);
+        validateContactName(name);
         final var contact = contactRepository.save(
                 Contact.builder()
                         .name(name)
@@ -43,5 +45,12 @@ public class ContactServiceImpl implements ContactService {
 
         phoneService.savePhone(phoneNumbers, contact);
         return fromEntity(contact, phoneNumbers);
+    }
+
+    @Override
+    public void validateContactName(final String name) {
+        if (contactRepository.existsByName(name)) {
+            throw new DataIntegrityViolationException("The name " + name + " is already registered!");
+        }
     }
 }

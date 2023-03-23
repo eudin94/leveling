@@ -45,6 +45,13 @@ public interface ContactController {
                             schema = @Schema(implementation = ContactDTO.class)
                     )}),
             @ApiResponse(
+                    responseCode = "400",
+                    description = "Contact name already registered!",
+                    content = {@Content(
+                            mediaType = MediaType.APPLICATION_JSON_VALUE,
+                            schema = @Schema(implementation = StandardError.class)
+                    )}),
+            @ApiResponse(
                     responseCode = "422",
                     description = "Error processing contact information!",
                     content = {@Content(

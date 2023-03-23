@@ -9,4 +9,6 @@ public interface ContactService {
     List<ContactDTO> findAllContacts();
 
     ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers);
+
+    void validateContactName(final String name);
 }
