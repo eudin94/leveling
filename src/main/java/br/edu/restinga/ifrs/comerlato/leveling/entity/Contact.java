@@ -1,12 +1,13 @@
 package br.edu.restinga.ifrs.comerlato.leveling.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -23,13 +24,4 @@ public class Contact {
     private Long id;
     private String name;
     private String email;
-
-    @ElementCollection
-    @OneToMany
-    @JoinTable(
-            name = "phone",
-            joinColumns = @JoinColumn(name = "contactId", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "number", referencedColumnName = "")
-    )
-    private List<Phone> phoneNumbers;
 }

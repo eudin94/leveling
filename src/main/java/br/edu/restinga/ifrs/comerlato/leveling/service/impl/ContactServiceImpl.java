@@ -4,6 +4,7 @@ import br.edu.restinga.ifrs.comerlato.leveling.dto.ContactDTO;
 import br.edu.restinga.ifrs.comerlato.leveling.entity.Contact;
 import br.edu.restinga.ifrs.comerlato.leveling.repository.ContactRepository;
 import br.edu.restinga.ifrs.comerlato.leveling.service.ContactService;
+import br.edu.restinga.ifrs.comerlato.leveling.service.PhoneService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,18 @@ import static br.edu.restinga.ifrs.comerlato.leveling.util.mapper.ContactMapper.
 public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository contactRepository;
+    private final PhoneService phoneService;
 
     @Override
-    public ContactDTO saveContact(String name, String email, List<String> phoneNumbers) {
+    public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
         final var contact = contactRepository.save(
-                Contact.builder().name(name).email(email).phoneNumbers(phoneNumbers).build()
+                Contact.builder()
+                        .name(name)
+                        .email(email)
+                        .build()
         );
 
+        phoneService.savePhone(phoneNumbers, contact);
         return fromEntity(contact);
     }
 }
