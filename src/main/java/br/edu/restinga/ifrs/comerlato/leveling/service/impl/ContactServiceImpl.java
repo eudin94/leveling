@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 import static br.edu.restinga.ifrs.comerlato.leveling.util.mapper.ContactMapper.fromEntity;
+import static br.edu.restinga.ifrs.comerlato.leveling.util.validator.ContactValidator.validateContactRequest;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +33,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactDTO saveContact(final String name, final String email, final List<String> phoneNumbers) {
+        validateContactRequest(name, email, phoneNumbers);
         final var contact = contactRepository.save(
                 Contact.builder()
                         .name(name)
