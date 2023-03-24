@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  servlet.context-path: '/contact-api'
+  compression.enabled: true
+  error.include-message: always
+
+spring:
+  application.name: contact-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3310/leveling
+    username: user
+    password: pass123
+  flyway:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3310/leveling
+    user: user
+    password: pass123
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+
+springdoc:
+  swagger-ui:
+    path: '/swagger-ui'
+  openapi:
+    info:
+      title: 'Contact API'
+      version: '1.0.0'
+      description: 'API for contact registration and listing'
+  default-produces-media-type: application/json
